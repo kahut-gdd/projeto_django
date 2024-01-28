@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block page_tittle %}
+    {% if kahut.pk  %}
+        Editar tarefa
+    {% else %}
+        Nova tarefa
+    {% endif %}
+{% endblock page_tittle %}
+
+{% block content %}
+    {% if kahut.pk %}
+        <h1>Editar tarefa</h1>
+    {% else %}
+        <h1>Nova tarefa</h1>
+    {% endif %}
+    
+    <form method="POST">
+        {% csrf_token %}
+
+        {{ form|crispy }}
+
+        <button class="btn btn-primary btn-lg" type="submit">Salvar</button>
+    </form>
+    {% endblock content %}
+    
